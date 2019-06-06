@@ -4,7 +4,7 @@ using namespace std;
 int main(){
     int n;
     cin >> n;
-    int arr[32]; // lenght 32 can store 4294967296 in binary form 
+    int arr[32]; // lenght 32 can store 4294967296 in binary form
     int i=0;
     while(n > 0){ // for convert decimal to binary
         arr[i] = n%2;
