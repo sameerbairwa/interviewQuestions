@@ -13,8 +13,8 @@ Pattern for N = 5
 */
 void printPattern(int n){
 	// Write your code here
-    int a=0, b=n-1,c=1;
-    int arr[n][n];
+    int a=0, b=n-1,c=1; //  a start with 0 row and b start with n-1 row that is last row of 2d matrix 
+    int arr[n][n]; // create a 2d matrix NxN
     for(int i=0; i<n; i++)
     {
         if(i%2==0){
