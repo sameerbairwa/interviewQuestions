@@ -14,8 +14,7 @@ For eg. N = 5
 */
 
 int main() {
-	// Write your code here
-    int n;
+    int n; //  declare a variable for number of rows 
     cin >> n;
     for(int i=0; i<n; i++){
         for(int j=1; j<=i+1; j++){
@@ -25,7 +24,7 @@ int main() {
         {
             cout << " ";
         }
-        for(int j=i+1; j>=1; j--){
+        for(int j=i+1; j>=1; j--){ // for print number left to right 
             cout << j;
         }
         cout << "\n";
