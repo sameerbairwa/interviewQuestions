@@ -8,6 +8,6 @@ int main(int argc, char const *argv[])
     gets(p); // for string input
     printf("Hello %s\n"); 
     return 0;
-}
+
 
 
