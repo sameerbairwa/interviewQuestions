@@ -11,18 +11,18 @@ bool sudokuSolver(int grid[N][N])
 {
     int row, col;
     if (!FindUnassignedLocation(grid, row, col))
-        return true; 
+        return true;
     for (int num = 1; num <= 9; num++)
     {
         if (isSafe(grid, row, col, num))
         {
             grid[row][col] = num;
-            if(sudokuSolver(grid))
+            if (sudokuSolver(grid))
                 return true;
             grid[row][col] = UNASSIGNED;
         }
     }
-    return false; 
+    return false;
 }
 
 /* Searches the grid to find an entry that is 
@@ -77,8 +77,16 @@ bool isSafe(int grid[N][N], int row,
            grid[row][col] == UNASSIGNED;
 }
 
-int main(){
-
-
+int main()
+{
+    int grid[N][N];
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            cin >> grid[i][j];
+        }
+    }
+    cout << sudokuSolver(grid);
     return true;
 }
