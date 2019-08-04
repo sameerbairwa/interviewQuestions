@@ -94,8 +94,9 @@ int numberOfNodes(TreeNode<int>* root){
     }
     return ans;
 }
+//this not best solution for sum of nodes
 int sumOfNodes(TreeNode<int>* root){
-        queue<TreeNode<int> *> q;
+    queue<TreeNode<int> *> q;
     q.push(root);
     int sum = 0;
     while (q.size() != 0)
@@ -109,6 +110,32 @@ int sumOfNodes(TreeNode<int>* root){
         q.pop();
     }
     return sum;
+}
+
+//this not best solution 
+TreeNode<int> *maxDataNode(TreeNode<int> *root)
+{
+    if(root == NULL){
+        return NULL;
+    }
+    queue<TreeNode<int> *> q;
+    q.push(root);
+    TreeNode<int>* maxNode = NULL;
+    int max = -100000000;
+    while (q.size() != 0)
+    {
+        TreeNode<int> *front = q.front();
+        if(front->data > max){
+            max = front->data;
+            maxNode = front;
+        }
+        for (int i = 0; i < front->children.size(); i++)
+        {
+            q.push(front->children[i]);
+        }
+        q.pop();
+    }
+    return maxNode;
 }
 
 int main(){
