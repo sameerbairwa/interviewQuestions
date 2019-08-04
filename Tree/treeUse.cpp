@@ -94,6 +94,22 @@ int numberOfNodes(TreeNode<int>* root){
     }
     return ans;
 }
+int sumOfNodes(TreeNode<int>* root){
+        queue<TreeNode<int> *> q;
+    q.push(root);
+    int sum = 0;
+    while (q.size() != 0)
+    {
+        TreeNode<int> *front = q.front();
+        sum += front->data;
+        for (int i = 0; i < front->children.size(); i++)
+        {
+            q.push(front->children[i]);
+        }
+        q.pop();
+    }
+    return sum;
+}
 
 int main(){
     // TreeNode<int>* root = new TreeNode<int>(1);
