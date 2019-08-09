@@ -1,60 +1,68 @@
 #include <iostream>
 #include "treeNode.h"
-#include<queue>
+#include <queue>
 using namespace std;
-TreeNode<int>* takeInputLevelWise(){
+TreeNode<int> *takeInputLevelWise()
+{
     int rootData;
     cout << "Enter root data" << endl;
     cin >> rootData;
-    TreeNode<int>* root = new TreeNode<int>(rootData);
+    TreeNode<int> *root = new TreeNode<int>(rootData);
 
-    queue<TreeNode<int>*> pendingNodes;
+    queue<TreeNode<int> *> pendingNodes;
     pendingNodes.push(root);
     while (pendingNodes.size() != 0)
     {
-        TreeNode<int>* front = pendingNodes.front();
+        TreeNode<int> *front = pendingNodes.front();
         pendingNodes.pop();
-        cout << "Enter number of children of" <<front->data << endl;
+        cout << "Enter number of children of" << front->data << endl;
         int numChild;
         cin >> numChild;
-        for(int i=0; i< numChild; i++){
+        for (int i = 0; i < numChild; i++)
+        {
             int childData;
             cout << "Enter" << i << "th child of  " << front->data << endl;
             cin >> childData;
-            TreeNode<int> *child  = new TreeNode<int>(childData);
+            TreeNode<int> *child = new TreeNode<int>(childData);
             front->children.push_back(child);
             pendingNodes.push(child);
         }
     }
-    return root; 
+    return root;
 }
 
-TreeNode<int>* takeInput(){
+TreeNode<int> *takeInput()
+{
     int rootData;
     cout << "Enter data" << endl;
     cin >> rootData;
-    TreeNode<int>* root = new TreeNode<int>(rootData);
+    TreeNode<int> *root = new TreeNode<int>(rootData);
     int n;
     cout << "Enter number of children of " << rootData << endl;
     cin >> n;
-    for(int i=0; i<n; i++){
-        TreeNode<int>*child = takeInput();
+    for (int i = 0; i < n; i++)
+    {
+        TreeNode<int> *child = takeInput();
         root->children.push_back(child);
     }
     return root;
 }
-void printTreeNode(TreeNode<int>* root){
+void printTreeNode(TreeNode<int> *root)
+{
     // edge case
-    if(root == NULL){
-        return ;
+    if (root == NULL)
+    {
+        return;
     }
     cout << root->data << ":" << endl;
-    for(int i=0; i<root->children.size(); i++){
+    for (int i = 0; i < root->children.size(); i++)
+    {
         cout << root->children[i]->data << ",";
     }
     cout << endl;
-    for(int i=0; i< root->children.size(); i++){
-        printTreeNode(root->children[i]); 
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        printTreeNode(root->children[i]);
     }
 }
 
@@ -78,7 +86,7 @@ void printLevelWise(TreeNode<int> *root)
         {
             cout << front->children[i]->data;
             if (i < front->children.size() - 1)
-            { 
+            {
                 cout << ",";
             }
         }
@@ -87,15 +95,18 @@ void printLevelWise(TreeNode<int> *root)
     }
 }
 
-int numberOfNodes(TreeNode<int>* root){
+int numberOfNodes(TreeNode<int> *root)
+{
     int ans = 1;
-    for(int i=0; i < root->children.size(); i++){
+    for (int i = 0; i < root->children.size(); i++)
+    {
         ans += numberOfNodes(root->children[i]);
     }
-    return ans;
+    return ans + 1;
 }
 //this not best solution for sum of nodes
-int sumOfNodes(TreeNode<int>* root){
+int sumOfNodes(TreeNode<int> *root)
+{
     queue<TreeNode<int> *> q;
     q.push(root);
     int sum = 0;
@@ -109,23 +120,37 @@ int sumOfNodes(TreeNode<int>* root){
         }
         q.pop();
     }
+    /*
+    recursivaly
+    if(root == NULL){
+        return 0;
+    }
+    int sum = root->data;
+    for(int i=0; i<root->children.size(); i++){
+        sum += sumOfNodes(root->children[i]);
+    }
+    
+    return sum; */
+
     return sum;
 }
 
-//this not best solution 
+//this not best solution
 TreeNode<int> *maxDataNode(TreeNode<int> *root)
 {
-    if(root == NULL){
+    if (root == NULL)
+    {
         return NULL;
     }
     queue<TreeNode<int> *> q;
     q.push(root);
-    TreeNode<int>* maxNode = NULL;
+    TreeNode<int> *maxNode = NULL;
     int max = -100000000;
     while (q.size() != 0)
     {
         TreeNode<int> *front = q.front();
-        if(front->data > max){
+        if (front->data > max)
+        {
             max = front->data;
             maxNode = front;
         }
@@ -136,9 +161,108 @@ TreeNode<int> *maxDataNode(TreeNode<int> *root)
         q.pop();
     }
     return maxNode;
+
+    /*
+    recursive 
+    if(root == NULL){
+        return NULL;
+    }
+    int  max = root->data;
+    TreeNode<int>* maxNode = NULL;
+    for(int i=0; i<root->children.size(); i++){
+         TreeNode<int>* x = maxDataNode(root->children[i]);
+        if(x->data > max ){
+            max = x->data;
+        }
+    }
+    maxNode = new TreeNode<int>(max);
+    return maxNode;
+
+     */
 }
 
-int main(){
+void printAtLevelK(TreeNode<int>* root, int k){
+    if(root == NULL){
+        return;
+    }
+    if(k==0){
+        cout << root->data << endl;
+        return ;
+    }
+    for(int i=0; i< root->children.size(); i++){
+        printAtLevelK(root->children[i], k-1);
+    }
+}
+
+int height(TreeNode<int> *root)
+{
+
+    if (root == NULL)
+    {
+        return 0;
+    }
+    int max = 0;
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        int h = height(root->children[i]);
+        if (h > max)
+        {
+            max = h;
+        }
+    }
+    return max + 1;
+}
+//Number of leaf nodes  
+int numLeafNodes(TreeNode<int> *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    //base condition
+    if (root->children.size() == 0)
+    {
+        return 1;
+    }
+    int count = 0;
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        count += numLeafNodes(root->children[i]);
+    }
+    return count;
+}
+
+void preOrder(TreeNode<int>* root){
+    if(root == NULL){
+        return ;
+    }
+    cout << root->data << " ";
+    for(int i=0; i<root->children.size(); i++){
+        preOrder(root->children[i]);
+    }
+}
+void postOrder(TreeNode<int> *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        postOrder(root->children[i]);
+    }
+    cout << root->data << " ";
+}
+
+void deleteTree(TreeNode<int>* root){
+    for(int i=0; i< root->children.size(); i++){
+        deleteTree(root->children[i]);
+    }
+    delete root;
+}
+int main()
+{
     // TreeNode<int>* root = new TreeNode<int>(1);
     // TreeNode<int> *node1 = new TreeNode<int>(2);
     // TreeNode<int> *node2 = new TreeNode<int>(3);
@@ -146,7 +270,11 @@ int main(){
     // root->children.push_back(node2);
 
     //TreeNode<int>* root = takeInput();
-    TreeNode<int>* root = takeInputLevelWise(); 
+    TreeNode<int> *root = takeInputLevelWise();
     printTreeNode(root);
+
     // todo delete tree
+    //deleteTree(root);
+    delete root;
+
 }
