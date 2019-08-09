@@ -1,7 +1,7 @@
 #include <iostream>
 #include "treeNode.h" // tree class
 #include <queue>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 #include <unordered_map>
 using namespace std;
 
@@ -65,9 +65,9 @@ void printLevelWise(TreeNode<int> *root)
 void helper(TreeNode<int> *root, int x, unordered_map<int, int> &map)
 {
 
-    for (int i = 0; i < root->numChildren(); i++)
+    for (int i = 0; i < root->children.size(); i++)
     {
-        helper(root->getChild(i), x + 1, map);
+        helper(root->children[i], x + 1, map);
     }
     map[x]++;
 }
@@ -104,7 +104,7 @@ int main()
     //printLevelWise(root);
     int result = maxLevel(root);
     cout << result;
-    
+
 
     delete root;
 }
