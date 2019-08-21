@@ -44,5 +44,4 @@ int main(){
     int arr[] = {2,12,9,16,10,5,3,25,11,1,8,6};
     int n = sizeof(arr)/sizeof(arr[0]);
     kSmallest(arr,n,5);
-
 }
