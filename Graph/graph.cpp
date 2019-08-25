@@ -2,7 +2,7 @@
 #include <queue>
 using namespace std;
 
-void print(int **edges, int n, int start, bool *visited)
+void DFS(int **edges, int n, int start, bool *visited)
 {
     cout << start << endl;
     visited[start] = true;
@@ -18,13 +18,18 @@ void print(int **edges, int n, int start, bool *visited)
             {
                 continue;
             }
-            print(edges, n, i, visited);
+            DFS(edges, n, i, visited);
         }
     }
 }
 
-void BFS(int **edges, int n, int start, bool *visited)
+void BFS(int **edges, int n, int start)
 {
+    bool *visited = new bool[n];
+    for (int i = 0; i < n; i++)
+    {
+        visited[i] = false;
+    }
     queue<int> q;
     q.push(start);
     visited[start] = true;
@@ -44,6 +49,7 @@ void BFS(int **edges, int n, int start, bool *visited)
         cout << q.front() << " ";
         q.pop();
     }
+    delete  [] visited;
 }
 int main()
 {
@@ -72,7 +78,12 @@ int main()
     {
         visited[i] = false;
     }
-    print(edges, n, 0, visited);
-    BFS(edges, n, 0, visited);
+    DFS(edges, n, 0, visited);
+    BFS(edges, n, 0);
     // delete all the memory
+    delete [] visited;
+    for(int i=0; i<n; i++){
+        delete [] edges[i];
+    }
+    delete [] edges;
 }
