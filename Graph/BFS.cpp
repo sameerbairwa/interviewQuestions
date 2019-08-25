@@ -23,6 +23,7 @@ void BFS(int **edges, int n, int start, bool *visited)
         cout << q.front() << " ";
         q.pop();
     }
+    delete [] visited;
 }
 int main()
 {
