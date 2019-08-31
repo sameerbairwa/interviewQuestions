@@ -19,7 +19,7 @@ template <typename T>
 class Queue
 {
     Node<T> *head, *tail;
-    T size = 0;
+    int size = 0;
 
 public:
     Queue()
