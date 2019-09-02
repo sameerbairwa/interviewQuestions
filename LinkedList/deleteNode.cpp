@@ -37,7 +37,7 @@ node *takeInput2()
     }
     return head;
 }
-node *deletenodeRec(node *head, int i)
+node *deletenode(node *head, int i)
 {
     node *preptr;
     node *ptr = head;
@@ -89,7 +89,7 @@ int main()
     cout << "Enter position of node : " << endl;
     int position;
     cin >> position;
-    head = deletenodeRec(head , position);
+    head = deletenode(head , position);
     print(head);
     return 0;
 }
