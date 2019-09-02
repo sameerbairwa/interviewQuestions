@@ -85,7 +85,6 @@ void print(node *head)
 int main()
 {
     node *head = NULL;
-    cout << "Enter Elements of linked list, -1 after last element : " << endl;
     head = takeInput2();
     cout << "Enter position of node : " << endl;
     int position;
