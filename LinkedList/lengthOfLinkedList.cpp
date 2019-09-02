@@ -76,10 +76,10 @@ int length(node *head)
     return len;
 }
 
-    int main()
-    {
+int main()
+{
         node *head = NULL;
         head = takeInput2();
         cout << " Length of Linked List "<<  length(head);
         return 0;
-    }
+}
