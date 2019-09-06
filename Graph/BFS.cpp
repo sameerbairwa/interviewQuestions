@@ -1,5 +1,5 @@
-#include<iostream>
-#include<queue>4
+#include <iostream>
+#include <queue>
 using namespace std;
 
 void BFS(int **edges, int n, int start, bool *visited)
@@ -23,7 +23,7 @@ void BFS(int **edges, int n, int start, bool *visited)
         cout << q.front() << " ";
         q.pop();
     }
-    delete [] visited;
+    delete[] visited;
 }
 int main()
 {
@@ -53,6 +53,6 @@ int main()
         visited[i] = false;
     }
 
-    BFS(edges,n,0,visited);
+    BFS(edges, n, 0, visited);
     return 0;
 }
