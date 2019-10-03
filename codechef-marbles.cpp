@@ -1,6 +1,6 @@
 //CodeChef-Marbles
 //https://www.codechef.com/problems/MARBLES
-//Explanation:-medium.com/@svaish97
+//Explanation:-medium.com/@svaish97/code-chef-marbles-solution-approach-1373ad768ea7
 
 
 #include <bits/stdc++.h>
