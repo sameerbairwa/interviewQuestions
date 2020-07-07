@@ -16,20 +16,24 @@ Example: 3 5
 #include <iostream>
 using namespace std;
 
-void printRectangle(int n, int m){
-    for(int i=0; i<n; i++){
-        for(int j=0; j<m; j++){
-            cout << "*" << " ";
+void printRectangle(int n, int m)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << "*"
+                 << " ";
         }
-        cout << "\n";  // cout << endl;
+        cout << "\n"; // cout << endl;
     }
 }
 
-int main(){
-    int n,m;
-    // n => number of rows 
-    // m => number of columns 
+int main()
+{
+    int n, m;
+    // n => number of rows
+    // m => number of columns
     cin >> n >> m;
-    printRectangle(n,m);
-
+    printRectangle(n, m);
 }
