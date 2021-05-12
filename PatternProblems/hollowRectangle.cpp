@@ -14,23 +14,7 @@ Example: 4 5
 
 */
 
-/*
-Problem: print Hollow rectangle using star
-Input format: n m 
-n: number of rows 
-m: number of columns 
 
-Output format: solid rectangle 
-Example: 4 5
-
-* * * * *
-*       *
-*       *
-* * * * * 
-
-To create a hollow rectangle we need at least 3 rows and 3 columns
-
-*/
 
 
 

@@ -22,8 +22,7 @@ void printRectangle(int n, int m)
     {
         for (int j = 0; j < m; j++)
         {
-            cout << "*"
-                 << " ";
+            cout << "* ";
         }
         cout << "\n"; // cout << endl;
     }
@@ -31,9 +30,10 @@ void printRectangle(int n, int m)
 
 int main()
 {
-    int n, m;
+    int n = 4, m = 5;
     // n => number of rows
     // m => number of columns
-    cin >> n >> m;
+    // cin >> n >> m;
     printRectangle(n, m);
 }
+
